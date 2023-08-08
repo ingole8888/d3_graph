@@ -1,6 +1,7 @@
 const express=require("express")
 const cors = require('cors')
 const connection= require("./config/config")
+const dataController = require("./routes/sampleroute")
 
 
 require('dotenv').config()
@@ -11,6 +12,8 @@ app.use(cors())
 app.get("/",(req,res)=>{
     return res.status(200).send("HomePage");
 })
+
+app.use("/data", dataController)
 
 app.listen(process.env.PORT,async()=>{
     try{
